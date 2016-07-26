@@ -1,4 +1,5 @@
 require 'spec_helper'
+require './app/app.rb'
 
 feature 'viewing links' do
 
