@@ -12,6 +12,19 @@
         <input type="submit" value='Sign out'>
       </form>
     </div>
+    <% else %>
+    <div id="sign in">
+      <form action="/sessions" method="post">
+          Email Address:<input type="email" name="email" required>
+          Password:<input type="password" name="pwd" required>
+          <input type="submit" value="Sign in">
+      </form>
+    </div>
+    <div id='sign up'>
+      <form action="/account/new" method="get">
+        <input type="submit" value="Sign up">
+      </form>
+    </div>
    <% end %>
       <div id='notice'>
       <% if flash[:notice] %>

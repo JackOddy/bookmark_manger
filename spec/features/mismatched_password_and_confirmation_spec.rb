@@ -1,9 +1,11 @@
 def bad_sign_up
   visit '/account/new'
-  fill_in 'email', with: 'test@test.com'
-  fill_in 'pwd', with: 'qwertyuiop'
-  fill_in 'pwd_confirmation', with: 'testing'
-  click_button 'submit'
+  within ("//div[@id='new account']") do
+    fill_in 'email', with: 'test@test.com'
+    fill_in 'pwd', with: 'qwertyuiop'
+    fill_in 'pwd_confirmation', with: 'testing'
+    click_button 'submit'
+  end
 end
 
 feature 'password confirmation' do

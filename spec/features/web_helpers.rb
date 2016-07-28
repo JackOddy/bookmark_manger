@@ -1,11 +1,15 @@
 def sign_in(email:, password:)
-  visit '/sessions/new'
+  visit '/links'
+  within ("//div[@id='sign in']") do
     fill_in :email, with: email
     fill_in :pwd, with: password
     click_button 'Sign in'
+  end
 end
 
 def sign_out
   visit '/links'
-  click_button 'Sign out'
+    within ("//div[@id='sign out']") do
+      click_button 'Sign out'
+  end
 end

@@ -1,8 +1,10 @@
 def no_email_sign_up
   visit '/account/new'
-  fill_in 'pwd', with: 'test'
-  fill_in 'pwd_confirmation', with: 'test'
-  click_button 'submit'
+  within ("//div[@id='new account']") do
+    fill_in 'pwd', with: 'test'
+    fill_in 'pwd_confirmation', with: 'test'
+    click_button 'submit'
+  end
 end
 
 feature 'requires email to sign up' do

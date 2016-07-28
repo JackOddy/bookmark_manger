@@ -1,9 +1,11 @@
 def sign_up(email: 'test@test.com')
   visit '/account/new'
-  fill_in 'email', with: email
-  fill_in 'pwd', with: 'test'
-  fill_in 'pwd_confirmation', with: 'test'
-  click_button 'submit'
+    within ("//div[@id='new account']") do
+      fill_in 'email', with: email
+      fill_in 'pwd', with: 'test'
+      fill_in 'pwd_confirmation', with: 'test'
+      click_button 'submit'
+    end
 end
 
 feature 'email validation' do
