@@ -47,23 +47,20 @@ post '/account' do
                      username: params[:user],
                      password: params[:pwd],
                      password_confirmation: params[:pwd_confirmation])
-    if @user.save
-      session[:user_id] = @user.id
-      redirect '/links'
-    else
-      flash.now[:notice] = 'Password & confirmation password do not match'
-      erb :'account/new'
-    end
+  p @user
+  if @user.save
+    session[:user_id] = @user.id
+    redirect '/links'
+  else
+    flash.now[:notice] = 'Password & confirmation password do not match'
+    erb :'account/new'
+  end
 end
 
 helpers do
   def current_user
     @current_user ||= User.get(session[:user_id])
 
-  end
-
-  def password_confirmation_error
-    'please make sure password and confirmation match'
   end
 end
     run! if app_file == $0
