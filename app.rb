@@ -11,6 +11,7 @@ class BookmarkManager < Sinatra::Base
   enable :sessions
   set :session_secret, 'super secret'
   register Sinatra::Flash
+  use Rack::MethodOverride
 
  get '/links' do
     @links = Link.all
@@ -68,6 +69,12 @@ post '/sessions' do
     flash.now[:errors] = ['The email or password is incorrect']
     erb :'/sessions/new'
   end
+end
+
+delete '/sessions' do
+  session[:user_id] = nil
+  flash.keep[:notice] = 'You have signed out'
+  redirect to '/links'
 end
 
 helpers do
