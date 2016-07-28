@@ -1,6 +1,6 @@
 <form action="/account" method="post">
-  Email Address:<input type="email" name="email">
-  Username:<input type="text" name="user">
+  Email Address:<input type="email" name="email" value='<%= @user.email %>'>
+  Username:<input type="text" name="user" value ='<%= @user.username %>'>
   Password:<input type="password" name="pwd">
   Password confirmation:<input type="password" name="pwd_confirmation">
   <input type="submit" value="submit">

@@ -38,16 +38,17 @@ end
 
 
 get '/account/new' do
+  @user = User.new
   erb :'account/new'
 end
 
 post '/account' do
-  user = User.create(email: params[:email],
+  @user = User.create(email: params[:email],
                      username: params[:user],
                      password: params[:pwd],
                      password_confirmation: params[:pwd_confirmation])
-    if user.save
-      session[:user_id] = user.id
+    if @user.save
+      session[:user_id] = @user.id
       redirect '/links'
     else
       flash.now[:notice] = 'Password & confirmation password do not match'
