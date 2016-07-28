@@ -10,6 +10,7 @@ gem 'rake'
 gem 'rspec-sinatra'
 gem 'selenium-webdriver'
 gem 'bcrypt'
+gem 'sinatra-flash'
 
 group :test do
   gem 'rspec'
