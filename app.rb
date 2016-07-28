@@ -40,16 +40,23 @@ get '/account/new' do
 end
 
 post '/account' do
-  user = User.create(email: params[:email], username: params[:user])
-  user.set_password(params[:password])
-  session[:user_id] = user.id
-  redirect '/links'
+    user = User.create(email: params[:email],
+                username: params[:user],
+                password: params[:pwd],
+                password_confirmation: params[:pwd_confirmation])
+    session[:user_id] = user.id
+    p user
+    redirect '/links'
 end
 
 helpers do
   def current_user
     @current_user ||= User.get(session[:user_id])
 
+  end
+
+  def password_confirmation_error
+    'please make sure password and confirmation match'
   end
 end
     run! if app_file == $0
