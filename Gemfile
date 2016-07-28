@@ -9,6 +9,7 @@ gem 'sinatra'
 gem 'rake'
 gem 'rspec-sinatra'
 gem 'selenium-webdriver'
+gem 'bcrypt'
 
 group :test do
   gem 'rspec'
