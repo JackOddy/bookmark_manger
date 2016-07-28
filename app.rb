@@ -13,6 +13,10 @@ class BookmarkManager < Sinatra::Base
   register Sinatra::Flash
   use Rack::MethodOverride
 
+  get '/' do
+    redirect '/links'
+  end
+
  get '/links' do
     @links = Link.all
     erb :'links/index'
