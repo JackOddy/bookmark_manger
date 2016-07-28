@@ -1,7 +1,6 @@
 def sign_up(email: 'test@test.com')
   visit '/account/new'
   fill_in 'email', with: email
-  fill_in 'user', with: 'username'
   fill_in 'pwd', with: 'test'
   fill_in 'pwd_confirmation', with: 'test'
   click_button 'submit'
@@ -18,7 +17,7 @@ feature 'email validation' do
     expect(page).to have_content('Email must not be blank')
   end
   scenario 'I cannot sign up with an invalid email address' do
-    expect { sign_up(email: "invalid@email") }.not_to change(User, :count)
+    expect { sign_up(email: "invalid") }.not_to change(User, :count)
     expect(page).to have_content('Email has an invalid format')
   end
 end

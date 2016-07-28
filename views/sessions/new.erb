@@ -1,0 +1,13 @@
+<form action="/sessions" method="post">
+  Email Address:<input type="email" name="email" required>
+  Password:<input type="password" name="pwd" required>
+  <input type="submit" value="Sign in">
+</form>
+
+<% if flash[:errors] %>
+  <div id="errors">
+    <% flash[:errors].each do |error| %>
+    <%= error %>
+    <% end %>
+  </div>
+<% end %>

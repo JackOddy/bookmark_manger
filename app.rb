@@ -44,7 +44,6 @@ end
 
 post '/account' do
   @user = User.create(email: params[:email],
-                     username: params[:user],
                      password: params[:pwd],
                      password_confirmation: params[:pwd_confirmation])
   if @user.save
@@ -53,6 +52,21 @@ post '/account' do
   else
     flash.now[:errors] = @user.errors.full_messages
     erb :'account/new'
+  end
+end
+
+get '/sessions/new' do
+  erb :'/sessions/new'
+end
+
+post '/sessions' do
+  user = User.authenticate(params[:email], params[:pwd])
+  if user
+    session[:user_id] = user.id
+    redirect '/links'
+  else
+    flash.now[:errors] = ['The email or password is incorrect']
+    erb :'/sessions/new'
   end
 end
 

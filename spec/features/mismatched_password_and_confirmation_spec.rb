@@ -1,7 +1,6 @@
 def bad_sign_up
   visit '/account/new'
   fill_in 'email', with: 'test@test.com'
-  fill_in 'user', with: 'silent_ninjaTruck87'
   fill_in 'pwd', with: 'qwertyuiop'
   fill_in 'pwd_confirmation', with: 'testing'
   click_button 'submit'
