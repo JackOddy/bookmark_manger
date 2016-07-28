@@ -37,12 +37,10 @@ RSpec.configure do |config|
     end
 
   config.before(:each) do
-    DatabaseCleaner.start
+      DatabaseCleaner.strategy = :transaction
+      DatabaseCleaner.clean_with(:truncation)
   end
 
-  config.after(:each) do
-    DatabaseCleaner.clean
-  end # rspec-expectations config goes here. You can use an alternate
   # assertion/expectation library such as wrong or the stdlib/minitest
   # assertions if you prefer.
   config.expect_with :rspec do |expectations|
