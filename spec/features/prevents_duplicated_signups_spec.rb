@@ -11,5 +11,6 @@ feature 'Prevents users signing up with email addresses that are taken' do
   scenario 'I cannot register an account with an email address that is in use' do
     sign_up
     expect { sign_up }.not_to change(User, :count)
+    expect(page).to have_content('Email is already taken')
   end
 end
