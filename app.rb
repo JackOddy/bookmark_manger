@@ -47,7 +47,6 @@ post '/account' do
                      username: params[:user],
                      password: params[:pwd],
                      password_confirmation: params[:pwd_confirmation])
-  p @user
   if @user.save
     session[:user_id] = @user.id
     redirect '/links'
